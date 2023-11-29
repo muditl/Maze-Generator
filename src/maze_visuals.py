@@ -3,15 +3,15 @@ import cv2
 from maze_solver import find_distances
 from maze_generator import binary_algorithm
 
-top = cv2.imread("images/top.png")
-bottom = cv2.imread("images/bottom.png")
-right = cv2.imread("images/right.png")
-left = cv2.imread("images/left.png")
+top = cv2.imread("../images/top.png")
+bottom = cv2.imread("../images/bottom.png")
+right = cv2.imread("../images/right.png")
+left = cv2.imread("../images/left.png")
 
 
 def make_cell_image(cell_image_code, north, south, east, west):
     flags = get_flags_from_code(cell_image_code)
-    image = cv2.imread("images/blank.png")
+    image = cv2.imread("../images/blank.png")
 
     if flags[0]:  # north
         image[0:15, 15:105] = north[0:15, 15:105, :]
@@ -62,7 +62,7 @@ def make_distances_visual(grid):
 
 
 def save_maze_png(image):
-    cv2.imwrite("maze.png", image)
+    cv2.imwrite("../maze.png", image)
 
 
 gridd = Grid(5, 5)

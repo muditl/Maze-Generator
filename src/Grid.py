@@ -24,7 +24,7 @@ class Cell:
             if not cell.links.__contains__(self):
                 cell.links.append(self)
         else:
-            print(f"{Fore.YELLOW}Warning: Cell is not a neighbor, could not link!{Style.RESET_ALL}")
+            print(f"{Fore.YELLOW}Internal Warning: Cell is not a neighbor, could not link!{Style.RESET_ALL}")
 
     # unlink cell to given cell
     def unlink(self, cell):

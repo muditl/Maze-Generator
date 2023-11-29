@@ -4,7 +4,7 @@ import cv2
 
 def make_cell_image_marked(cell_image_code, north, south, east, west, marker):
     flags = get_flags_from_code(cell_image_code)
-    image = cv2.imread("images/blank.png")
+    image = cv2.imread("../images/blank.png")
 
     if flags[0]:  # north
         image[0:15, 15:105] = north[0:15, 15:105, :]
@@ -44,7 +44,7 @@ def make_cell_image_marked(cell_image_code, north, south, east, west, marker):
 
 def make_cell_image_distances(cell_image_code, north, south, east, west, distance, highest):
     flags = get_flags_from_code(cell_image_code)
-    image = cv2.imread("images/blank.png")
+    image = cv2.imread("../images/blank.png")
 
     if flags[0]:  # north
         image[0:15, 15:105] = north[0:15, 15:105, :]
@@ -103,4 +103,4 @@ def make_maze_visual_color(grid, north, south, east, west, distances):
 
 
 def save_maze_png(image):
-    cv2.imwrite("maze.png", image)
+    cv2.imwrite("../maze.png", image)

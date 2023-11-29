@@ -1,6 +1,6 @@
-from Grid import Grid
-from maze_visuals import make_maze_visual, save_maze_png
-from maze_generator import binary_algorithm, sidewinder, aldous_broder, wilson, hunt_and_kill
+from src.Grid import Grid
+from src.maze_visuals import make_maze_visual, save_maze_png
+from src.maze_generator import hunt_and_kill
 import cv2
 from colorama import Fore
 from colorama import Style

@@ -2,14 +2,13 @@ import cv2
 from Grid import Grid
 import numpy as np
 from maze_visuals_plus import make_maze_visual_marked, make_maze_visual_color
-from maze_solver import find_distances
 from maze_visuals import make_maze_visual
 from maze_generator import *
 
-top = cv2.imread("images/top.png")
-bottom = cv2.imread("images/bottom.png")
-right = cv2.imread("images/right.png")
-left = cv2.imread("images/left.png")
+top = cv2.imread("../images/top.png")
+bottom = cv2.imread("../images/bottom.png")
+right = cv2.imread("../images/right.png")
+left = cv2.imread("../images/left.png")
 
 
 def binary_algorithm_vis(grid: Grid):
@@ -290,7 +289,6 @@ griddy = Grid(6, 6)
 
 hunt_and_kill_vis(griddy)
 
-distances = find_distances(griddy, (0, 0))
 image = make_maze_visual(griddy, top, bottom, right, left)
 
 # print(distances.cells)
@@ -301,17 +299,3 @@ cv2.destroyAllWindows()
 
 
 # cv2.imwrite("grid.jpg", image)
-
-def longest_path(grid):
-    randx, randy = np.random.rand(2)
-    randx = int(randx * grid.shape[0])
-    randy = int(randy * grid.shape[1])
-
-    d = find_distances(grid, (randx, randy))
-    maxi = np.unravel_index(np.argmax(d.distances_array, axis=None), d.distances_array.shape)
-
-    d = find_distances(grid, maxi)
-    # print(d)
-
-
-longest_path(griddy)

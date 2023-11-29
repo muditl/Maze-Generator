@@ -1,4 +1,4 @@
-from Grid import *
+from src.Grid import *
 from pytest import raises
 
 
@@ -24,8 +24,9 @@ def test_raises_invalid_row_column_exception():
 
 
 def test_link():
-    cell1 = Cell(4, 5)
-    cell2 = Cell(4, 6)
+    grid = Grid(10,10)
+    cell1 = grid.get_cell(4, 5)
+    cell2 = grid.get_cell(4, 6)
     assert (cell1.check_unlink(cell2) is True)
     assert (cell2.check_unlink(cell1) is True)
     cell1.link(cell2)
@@ -34,8 +35,9 @@ def test_link():
 
 
 def test_unlink():
-    cell1 = Cell(4, 5)
-    cell2 = Cell(4, 6)
+    grid = Grid(10,10)
+    cell1 = grid.get_cell(4, 5)
+    cell2 = grid.get_cell(4, 6)
     assert (cell1.check_unlink(cell2) is True)
     assert (cell2.check_unlink(cell1) is True)
     cell1.link(cell2)
@@ -115,7 +117,9 @@ def test_get_neighbors():
                 assert (neighbors[1] == grid.get_cell(i, j - 1))  # west
 
 
-# TODO make test for calculate image,
+# TODO make test for calculate image
 
 def test_some_runner_code():
     grid = Grid(5, 5)
+
+# coverage run --source=./test -m unittest discover -s test/ && coverage report
