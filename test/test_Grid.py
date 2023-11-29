@@ -70,5 +70,5 @@ class TestGrid(unittest.TestCase):
                     self.assertEqual(grid.get_cell(i - 1, j), neighbors[0])  # north
                     self.assertEqual(grid.get_cell(i, j - 1), neighbors[1])  # west
 
-# coverage run --source=./test -m unittest discover -s test/ && coverage report
-# python -m coverage run --source= test -m unittest discover -s test
+# python -m coverage run --source=src -m unittest discover -s test
+# python -m coverage report
