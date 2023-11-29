@@ -308,7 +308,7 @@ def longest_path(grid):
     randy = int(randy * grid.shape[1])
 
     d = find_distances(grid, (randx, randy))
-    maxi = np.unravel_index(np.argmax(d.cells, axis=None), d.cells.shape)
+    maxi = np.unravel_index(np.argmax(d.distances_array, axis=None), d.distances_array.shape)
 
     d = find_distances(grid, maxi)
     # print(d)

@@ -115,7 +115,6 @@ def test_get_neighbors():
                 assert (neighbors[1] == grid.get_cell(i, j - 1))  # west
 
 
-
 # TODO make test for calculate image,
 
 def test_some_runner_code():

@@ -90,7 +90,7 @@ def make_maze_visual_marked(grid, north, south, east, west):
 
 
 def make_maze_visual_color(grid, north, south, east, west, distances):
-    high = distances.cells.max()
+    high = distances.distances_array.max()
     final_image = np.zeros((grid.shape[0] * 120, grid.shape[1] * 120, 3), np.uint8)
     for i, row in enumerate(grid):
         for j, cell in enumerate(row):
