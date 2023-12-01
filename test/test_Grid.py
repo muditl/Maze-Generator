@@ -70,5 +70,16 @@ class TestGrid(unittest.TestCase):
                     self.assertEqual(grid.get_cell(i - 1, j), neighbors[0])  # north
                     self.assertEqual(grid.get_cell(i, j - 1), neighbors[1])  # west
 
+    def test_str(self):
+        grid = Grid(5, 5)
+        expected = "(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), \n" + \
+                   "(1, 0), (1, 1), (1, 2), (1, 3), (1, 4), \n" + \
+                   "(2, 0), (2, 1), (2, 2), (2, 3), (2, 4), \n" + \
+                   "(3, 0), (3, 1), (3, 2), (3, 3), (3, 4), \n" + \
+                   "(4, 0), (4, 1), (4, 2), (4, 3), (4, 4)"
+        self.assertEqual(expected, grid.__str__())
+
+
+
 # python -m coverage run --source=src -m unittest discover -s test
 # python -m coverage report

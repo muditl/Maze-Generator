@@ -3,6 +3,7 @@ from colorama import Fore, Style
 
 class Cell:
 
+    # initialises cell with row and column
     def __init__(self, row, column):
         if row < 0 or column < 0:
             raise Exception("Given row or column invalid: " + str((row, column)))
@@ -51,6 +52,7 @@ class Cell:
             neighbors.append(self.west)
         return neighbors
 
+    # get neighbors not linked to this cell. ## can consider deleting this method.
     def get_unlinked_neighbors(self):
         neighbors = self.get_neighbors()
         unl = []
@@ -59,6 +61,7 @@ class Cell:
                 unl.append(cell)
         return unl
 
+    # get neighbors linked to this cell
     def get_linked_neighbors(self):
         neighbors = self.get_neighbors()
         lin = []
@@ -67,6 +70,7 @@ class Cell:
                 lin.append(cell)
         return lin
 
+    # get nieghbors which are not linked to any of their nieghbors
     def get_closed_neighbors(self):
         neighbors = self.get_neighbors()
         closed = []
@@ -75,12 +79,15 @@ class Cell:
                 closed.append(cell)
         return closed
 
+    # mark cell (for visualisation)
     def mark(self, mark):
         self.marker = mark
 
+    # reset marker to 0
     def unmark(self):
         self.marker = 0
 
+    # get the position of the cell
     def get_position(self):
         return self.position
 
@@ -88,16 +95,16 @@ class Cell:
     # binary number where each digit represents each direction
     # 1000: north, 100: south, 10: east, 1: west
     # e.g. 1010 -> north and east are open, south and west are closed
-    def calculate_image_code(self):
+    def get_image_code(self):
         image = 0b0000
         for _l in self.links:
             if self.north == _l:
                 image += 0b1000
-            if self.south == _l:
+            elif self.south == _l:
                 image += 0b100
-            if self.east == _l:
+            elif self.east == _l:
                 image += 0b10
-            if self.west == _l:
+            elif self.west == _l:
                 image += 0b1
         return image
 

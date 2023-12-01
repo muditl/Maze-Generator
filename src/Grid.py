@@ -9,8 +9,9 @@ class Grid:
         self.cells = np.zeros(shape=(x, y), dtype=Cell)
         self.initialise_cells()
 
-    def __iter__(self):
-        return self.cells.__iter__()
+    # Check if removing this breaks anything...
+    # def __iter__(self):
+    #     return self.cells.__iter__()
 
     def initialise_cells(self):
         for i in range(self.shape[0]):
@@ -34,4 +35,4 @@ class Grid:
             for j in range(self.shape[1]):
                 res += str(self.cells[i, j]) + ", "
             res += "\n"
-        return res
+        return res[:-3]

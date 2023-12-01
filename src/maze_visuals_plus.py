@@ -82,7 +82,7 @@ def make_maze_visual_marked(grid, north, south, east, west):
     final_image = np.zeros((grid.shape[0] * 120, grid.shape[1] * 120, 3), np.uint8)
     for i, row in enumerate(grid):
         for j, cell in enumerate(row):
-            cell_image_code = cell.calculate_image_code()
+            cell_image_code = cell.get_image_code()
             cell_image = make_cell_image_marked(cell_image_code, north, south, east, west, cell.marker)
 
             final_image[i * 120:(i + 1) * 120, j * 120:(j + 1) * 120] = cell_image
@@ -94,7 +94,7 @@ def make_maze_visual_color(grid, north, south, east, west, distances):
     final_image = np.zeros((grid.shape[0] * 120, grid.shape[1] * 120, 3), np.uint8)
     for i, row in enumerate(grid):
         for j, cell in enumerate(row):
-            cell_image_code = cell.calculate_image_code()
+            cell_image_code = cell.get_image_code()
             cell_image = make_cell_image_distances(cell_image_code, north, south, east, west,
                                                    distances.__getitem__(cell.get_position()), high)
 
