@@ -1,18 +1,21 @@
 import numpy as np
-from Grid import Grid, Cell
-from maze_generator import hunt_and_kill
+from src.Grid import Grid
+from src.Cell import Cell
 
 
 class Distances:
     def __init__(self, grid, starting_point=(0, 0)):
         self.grid = grid
         self.distances_array = np.full_like(grid.cells, -1)
-        self.calculate_distances(grid, starting_point)
+        self.__calculate_distances(grid, starting_point)
+
+    def get_array(self):
+        return self.distances_array
 
     def reset_distances(self):
         self.distances_array = np.full_like(self.grid.cells, -1)
 
-    def calculate_distances(self, grid, starting_point):
+    def __calculate_distances(self, grid, starting_point):
         x, y = starting_point
         frontier = [grid.get_cell(x, y)]
         self.distances_array[x, y] = 0
@@ -68,16 +71,8 @@ class Distances:
         x = int(np.random.rand(1)[0] * self.grid.shape[0])
         y = int(np.random.rand(1)[0] * self.grid.shape[1])
         self.reset_distances()
-        self.calculate_distances(self.grid, (x, y))
+        self.__calculate_distances(self.grid, (x, y))
         furthest_start = self.get_furthest_cell_location()
         self.reset_distances()
-        self.calculate_distances(self.grid, furthest_start)
-        return self.distances_array
-
-
-_grid = hunt_and_kill(Grid(5, 5))
-distances_ = Distances(_grid)
-d1 = distances_.get_longest_path_sequence()
-print(d1)
-
+        self.__calculate_distances(self.grid, furthest_start)
 
