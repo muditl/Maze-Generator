@@ -9,10 +9,7 @@ class Distances:
         self.distances_array = np.full_like(grid.cells, -1)
         self.__calculate_distances(grid, starting_point)
 
-    def get_array(self):
-        return self.distances_array
-
-    def reset_distances(self):
+    def __reset_distances(self):
         self.distances_array = np.full_like(self.grid.cells, -1)
 
     def __calculate_distances(self, grid, starting_point):
@@ -35,9 +32,6 @@ class Distances:
     def __getitem__(self, item):
         return self.distances_array[item]
 
-    def set_distance(self, i, j, d):
-        self.distances_array[i, j] = d
-
     def __str__(self):
         return str(self.distances_array)
 
@@ -48,31 +42,31 @@ class Distances:
         return np.unravel_index(np.argmin(self.distances_array, axis=None), self.distances_array.shape)
 
     def get_longest_path_sequence(self):
-        self.set_longest_distances_array()
+        self.__set_longest_distances_array()
         start = self.get_start_cell_location()
         end = self.get_furthest_cell_location()
         current = self.grid.get_cell(*end)
         path = [end]
         while current != self.grid.get_cell(*start):
-            _next = self.get_previous_location(current)
+            _next = self.__get_previous_location(current)
             path.append(_next.get_position())
             current = _next
         return path
 
-    def get_previous_location(self, current_cell: Cell):
+    def __get_previous_location(self, current_cell: Cell):
         linked_neighbours = current_cell.get_linked_neighbors()
         for n in linked_neighbours:
             pos = n.get_position()
             if self.distances_array[pos] == self.distances_array[current_cell.get_position()] - 1:
                 return self.grid.get_cell(*pos)
 
-    def set_longest_distances_array(self):
+    def __set_longest_distances_array(self):
         # choose a random point
         x = int(np.random.rand(1)[0] * self.grid.shape[0])
         y = int(np.random.rand(1)[0] * self.grid.shape[1])
-        self.reset_distances()
+        self.__reset_distances()
         self.__calculate_distances(self.grid, (x, y))
         furthest_start = self.get_furthest_cell_location()
-        self.reset_distances()
+        self.__reset_distances()
         self.__calculate_distances(self.grid, furthest_start)
 

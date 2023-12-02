@@ -1,5 +1,6 @@
 import numpy as np
-from Grid import Grid, Cell
+from src.Grid import Grid
+from src.Cell import Cell
 
 
 class Generator:

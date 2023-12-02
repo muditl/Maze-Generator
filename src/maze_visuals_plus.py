@@ -96,7 +96,7 @@ def make_maze_visual_color(grid, north, south, east, west, distances):
         for j, cell in enumerate(row):
             cell_image_code = cell.get_image_code()
             cell_image = make_cell_image_distances(cell_image_code, north, south, east, west,
-                                                   distances.__getitem__(cell.get_position()), high)
+                                                   distances.distances_array[cell.get_position()], high)
 
             final_image[i * 120:(i + 1) * 120, j * 120:(j + 1) * 120] = cell_image
     return final_image
