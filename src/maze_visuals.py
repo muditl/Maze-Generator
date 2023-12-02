@@ -1,7 +1,7 @@
-from Grid import *
+import numpy as np
+from src.Grid import Grid
 import cv2
-from maze_solver import find_distances
-from maze_generator import binary_algorithm
+from src.Distances import Distances
 
 top = cv2.imread("../images/top.png")
 bottom = cv2.imread("../images/bottom.png")
@@ -53,8 +53,7 @@ def make_maze_visual(grid, north, south, east, west):
 
 def make_distances_visual(grid):
     grid_image = make_maze_visual(grid, top, bottom, right, left)
-
-    d = find_distances(grid, (0, 0))
+    d = Distances(grid, (0, 0))
 
     for row in grid:
         for c in row:
@@ -63,7 +62,3 @@ def make_distances_visual(grid):
 
 def save_maze_png(image):
     cv2.imwrite("../maze.png", image)
-
-
-gridd = Grid(5, 5)
-make_distances_visual(binary_algorithm(gridd))

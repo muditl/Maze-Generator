@@ -3,7 +3,7 @@ from Grid import Grid
 import numpy as np
 from maze_visuals_plus import make_maze_visual_marked, make_maze_visual_color
 from maze_visuals import make_maze_visual
-from maze_generator import *
+from Generator import *
 
 top = cv2.imread("../images/top.png")
 bottom = cv2.imread("../images/bottom.png")

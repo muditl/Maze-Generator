@@ -1,5 +1,6 @@
 import numpy as np
 from src.Cell import Cell
+from unittest.mock import patch, call
 
 
 class Grid:
@@ -10,8 +11,8 @@ class Grid:
         self.initialise_cells()
 
     # Check if removing this breaks anything...
-    # def __iter__(self):
-    #     return self.cells.__iter__()
+    def __iter__(self):
+        return self.cells.__iter__()
 
     def initialise_cells(self):
         for i in range(self.shape[0]):
@@ -36,3 +37,11 @@ class Grid:
                 res += str(self.cells[i, j]) + ", "
             res += "\n"
         return res[:-3]
+
+    def get_markers_str(self):
+        res = ""
+        for row in self:
+            for cell in row:
+                res += str(cell.marker) + " "
+            res+= "\n"
+        return res[:-2]

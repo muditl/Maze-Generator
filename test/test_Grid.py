@@ -79,7 +79,14 @@ class TestGrid(unittest.TestCase):
                    "(4, 0), (4, 1), (4, 2), (4, 3), (4, 4)"
         self.assertEqual(expected, grid.__str__())
 
-
+    def test_get_markers_str(self):
+        grid = Grid(5, 5)
+        expected = "0 0 0 0 0 \n" + \
+                   "0 0 0 0 0 \n" + \
+                   "0 0 0 0 0 \n" + \
+                   "0 0 0 0 0 \n" + \
+                   "0 0 0 0 0"
+        self.assertEqual(expected, grid.get_markers_str())
 
 # python -m coverage run --source=src -m unittest discover -s test
 # python -m coverage report
