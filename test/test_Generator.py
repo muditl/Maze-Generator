@@ -21,3 +21,6 @@ class TestGenerator(unittest.TestCase):
 
     def test_hunt_and_kill(self):
         self.assertTrue(Analysis(self.generator.hunt_and_kill()).is_perfect_maze())
+
+    def test_recursive_backtracker(self):
+        self.assertTrue(Analysis(self.generator.recursive_backtracker()).is_perfect_maze())

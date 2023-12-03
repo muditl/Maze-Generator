@@ -195,3 +195,23 @@ class Generator:
                             neighbor = visited_neighbors[idx]
                             current.link(neighbor)
         return grid
+
+    def recursive_backtracker(self):
+        grid = Grid(self.x, self.y)
+        random_i = np.random.randint(0, grid.shape[0])
+        random_j = np.random.randint(0, grid.shape[1])
+        stack = [grid.get_cell(random_i, random_j)]
+
+        while len(stack) > 0:
+            current = stack[-1]
+            neighbors = current.get_closed_neighbors()
+
+            if len(neighbors) == 0:
+                stack.remove(current)
+            else:
+                rand_i = np.random.randint(0, len(neighbors))
+                neighbor = neighbors[rand_i]
+                current.link(neighbor)
+                stack.append(neighbor)
+
+        return grid
