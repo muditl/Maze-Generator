@@ -1,6 +1,5 @@
 import numpy as np
 from src.Cell import Cell
-from unittest.mock import patch, call
 
 
 class Grid:
@@ -43,5 +42,5 @@ class Grid:
         for row in self:
             for cell in row:
                 res += str(cell.marker) + " "
-            res+= "\n"
+            res += "\n"
         return res[:-2]

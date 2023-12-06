@@ -13,7 +13,7 @@ class Generator:
         self.__init__(i, j)
 
     # makes very simple mazes
-    def binary_algorithm(self):
+    def binary_tree(self):
         grid = Grid(self.x, self.y)
         # iterate from bottom left corner
         for i in range(grid.shape[0] - 1, -1, -1):

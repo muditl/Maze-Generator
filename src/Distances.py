@@ -1,5 +1,4 @@
 import numpy as np
-from src.Grid import Grid
 from src.Cell import Cell
 
 
@@ -7,14 +6,15 @@ class Distances:
     def __init__(self, grid, starting_point=(0, 0)):
         self.grid = grid
         self.distances_array = np.full_like(grid.cells, -1)
-        self.__calculate_distances(grid, starting_point)
+        self.__calculate_distances(starting_point)
 
     def __reset_distances(self):
         self.distances_array = np.full_like(self.grid.cells, -1)
 
-    def __calculate_distances(self, grid, starting_point):
+    def __calculate_distances(self, starting_point):
+        self.__reset_distances()
         x, y = starting_point
-        frontier = [grid.get_cell(x, y)]
+        frontier = [self.grid.get_cell(x, y)]
         self.distances_array[x, y] = 0
         d = 1
         while len(frontier) > 0:
@@ -65,8 +65,7 @@ class Distances:
         x = int(np.random.rand(1)[0] * self.grid.shape[0])
         y = int(np.random.rand(1)[0] * self.grid.shape[1])
         self.__reset_distances()
-        self.__calculate_distances(self.grid, (x, y))
+        self.__calculate_distances((x, y))
         furthest_start = self.get_furthest_cell_location()
         self.__reset_distances()
-        self.__calculate_distances(self.grid, furthest_start)
-
+        self.__calculate_distances(furthest_start)

@@ -8,7 +8,7 @@ class TestGenerator(unittest.TestCase):
         self.generator = Generator(10, 10)
 
     def test_binary_algorithm(self):
-        self.assertTrue(Analysis(self.generator.binary_algorithm()).is_perfect_maze())
+        self.assertTrue(Analysis(self.generator.binary_tree()).is_perfect_maze())
 
     def test_sidewinder(self):
         self.assertTrue(Analysis(self.generator.sidewinder()).is_perfect_maze())
@@ -16,8 +16,8 @@ class TestGenerator(unittest.TestCase):
     def test_aldous_broder(self):
         self.assertTrue(Analysis(self.generator.aldous_broder()).is_perfect_maze())
 
-    # def test_wilson(self):
-    #     self.assertTrue(Analysis(self.generator.wilson()).is_perfect_maze())
+#     def test_wilson(self):
+#         self.assertTrue(Analysis(self.generator.wilson()).is_perfect_maze())
 
     def test_hunt_and_kill(self):
         self.assertTrue(Analysis(self.generator.hunt_and_kill()).is_perfect_maze())
